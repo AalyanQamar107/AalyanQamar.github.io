@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,12 +49,6 @@ nav{
   backdrop-filter:blur(18px);
   border-bottom:1px solid var(--border);
 }
-/* .nav-logo{
-  font-family:var(--mono);font-size:11.5px;color:var(--cyan);
-  letter-spacing:0.1em;text-decoration:none;
-  display:flex;align-items:center;gap:8px;
-}
-.nav-logo::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:lv 2.5s ease-in-out infinite;} */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -64,20 +59,18 @@ nav{
   color: var(--cyan);
   letter-spacing: 0.1em;
 }
-
 .nav-logo::before {
   content: '';
   display: inline-block;
-  width: 70px;          /* adjust to your icon size */
+  width: 70px;
   height: 70px;
   background-image: url('myicon.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* remove the original green circle styles */
   border-radius: 0;
   background-color: transparent;
-  animation: none;      /* optional: keep or add your own animation */
+  animation: none;
 }
 @keyframes lv{0%,100%{opacity:1}50%{opacity:.2}}
 .nav-links{display:flex;gap:32px;list-style:none;}
@@ -347,6 +340,107 @@ footer{
   .sec{padding:80px 0;}
 }
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* ─── PRIVACY MODAL ─── */
+.privacy-modal{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);
+  overflow-y:auto;padding:40px 20px;
+}
+.privacy-modal.open{display:block;}
+.privacy-box{
+  max-width:760px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:6px;overflow:hidden;
+}
+.privacy-bar{
+  background:var(--card);padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1;
+}
+.privacy-bar-title{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:0.16em;color:var(--cyan);
+  display:flex;align-items:center;gap:9px;
+}
+.privacy-bar-title::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--green);
+  display:block;animation:lv 2.5s ease-in-out infinite;
+}
+.privacy-close{
+  background:transparent;border:1px solid rgba(0,217,245,0.2);color:var(--dim);
+  font-family:var(--mono);font-size:10px;letter-spacing:0.1em;
+  padding:5px 13px;cursor:pointer;transition:all .2s;
+}
+.privacy-close:hover{background:rgba(0,217,245,0.07);color:var(--ink);border-color:var(--cyan);}
+.privacy-content{padding:36px 40px 48px;}
+.privacy-content h1{
+  font-family:var(--display);font-size:42px;letter-spacing:0.03em;
+  color:var(--ink);margin-bottom:6px;line-height:1;
+}
+.privacy-updated{
+  font-family:var(--mono);font-size:9.5px;color:var(--dim);
+  letter-spacing:0.1em;margin-bottom:36px;display:block;
+}
+.privacy-content h2{
+  font-family:var(--display);font-size:20px;letter-spacing:0.04em;
+  color:var(--cyan);margin:32px 0 12px;
+  padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.privacy-content h3{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.12em;
+  color:var(--ink);margin:20px 0 8px;text-transform:uppercase;
+}
+.privacy-content p{
+  font-size:13.5px;color:var(--dim);line-height:1.8;margin-bottom:12px;
+}
+.privacy-content ul{
+  list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:14px;
+}
+.privacy-content ul li{
+  font-size:13px;color:var(--dim);line-height:1.7;
+  padding:9px 13px;background:var(--card);border-left:2px solid var(--border);
+  display:flex;align-items:flex-start;gap:9px;
+}
+.privacy-content ul li::before{content:'›';color:var(--cyan);font-size:13px;flex-shrink:0;margin-top:1px;}
+.privacy-content ul li b{color:var(--ink);}
+.privacy-no-list{
+  list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:14px;
+}
+.privacy-no-list li{
+  font-size:13px;color:var(--dim);line-height:1.7;
+  padding:9px 13px;background:rgba(240,79,90,0.05);border-left:2px solid rgba(240,79,90,0.3);
+  display:flex;align-items:flex-start;gap:9px;
+}
+.privacy-no-list li::before{content:'✕';color:var(--red);font-size:11px;flex-shrink:0;margin-top:2px;}
+.privacy-note{
+  background:rgba(0,217,245,0.04);border:1px solid rgba(0,217,245,0.12);
+  border-radius:3px;padding:13px 16px;margin:14px 0;
+  font-family:var(--mono);font-size:10.5px;color:var(--dim);line-height:1.7;
+}
+.privacy-note b{color:var(--cyan);}
+.privacy-table{width:100%;border-collapse:collapse;margin:14px 0;}
+.privacy-table th{
+  background:var(--card);padding:8px 13px;text-align:left;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;color:var(--cyan);
+  border-bottom:1px solid var(--border);
+}
+.privacy-table td{
+  padding:9px 13px;font-size:12.5px;color:var(--dim);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.privacy-table td:first-child{font-family:var(--mono);font-size:11px;color:var(--ink);}
+.privacy-table tr:hover td{background:rgba(255,255,255,0.02);}
+.privacy-footer-note{
+  margin-top:36px;padding:14px 18px;
+  background:var(--card);border:1px solid var(--border);border-radius:3px;
+  font-family:var(--mono);font-size:10px;letter-spacing:0.08em;
+  color:var(--dim);text-align:center;
+}
+.privacy-footer-note span{color:var(--cyan);}
+@media(max-width:600px){
+  .privacy-content{padding:24px 20px 36px;}
+  .privacy-content h1{font-size:30px;}
+}
 </style>
 </head>
 <body>
@@ -611,23 +705,20 @@ footer{
               <span class="bpill bpill-linux">🐧 forensic_assistant_amd64.deb</span>
             </div>
           </div>
-          
           <div class="bundle-actions">
             <a href="https://forensichat-model.fra1.digitaloceanspaces.com/software/ForensicAssistant.exe" class="bbtn bbtn-full">
               <svg viewBox="0 0 24 24"><path d="M12 16l-4-4h3V4h2v8h3l-4 4zm-7 4v-2h14v2H5z"/></svg>
-    Download Full Bundle
+              Download Full Bundle
             </a>
-           <a href="https://forensichat-model.fra1.digitaloceanspaces.com/software/ForensicAssistant" class="bbtn bbtn-src">
+            <a href="https://forensichat-model.fra1.digitaloceanspaces.com/software/ForensicAssistant" class="bbtn bbtn-src">
               <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-    Linux Executable Only
+              Linux Executable Only
             </a>
-        <a href="https://forensichat-model.fra1.digitaloceanspaces.com/Models/llama-3.2-3b-instruct-q4_k_m.gguf" class="bbtn bbtn-full" style="background:#2a2f3f;color:var(--cyan);border:1px solid rgba(0,217,245,0.3);">
-          <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-    Download Model Only (~2.0 GB)
-        </a>
-      <div class="bundle-meta">ZIP archives · platform-agnostic · model file is GGUF format for LLaMA 3.2</div>
-</div>
-          
+            <a href="https://forensichat-model.fra1.digitaloceanspaces.com/Models/llama-3.2-3b-instruct-q4_k_m.gguf" class="bbtn bbtn-full" style="background:#2a2f3f;color:var(--cyan);border:1px solid rgba(0,217,245,0.3);">
+              <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+              Download Model Only (~2.0 GB)
+            </a>
+            <div class="bundle-meta">ZIP archives · platform-agnostic · model file is GGUF format for LLaMA 3.2</div>
           </div>
         </div>
       </div>
@@ -668,7 +759,7 @@ footer{
             </div>
             <a href="https://forensichat-model.fra1.digitaloceanspaces.com/software/forensiChat.exe" class="dl-btn dl-btn-win">
               <svg viewBox="0 0 24 24"><path d="M12 16l-4-4h3V4h2v8h3l-4 4zm-7 4v-2h14v2H5z"/></svg>
-                Download for Windows
+              Download for Windows
             </a>
             <div class="dl-note">Run as Administrator for full collection</div>
           </div>
@@ -708,7 +799,7 @@ footer{
             </div>
             <a href="https://forensichat-model.fra1.digitaloceanspaces.com/software/ForensiChat" class="dl-btn dl-btn-linux">
               <svg viewBox="0 0 24 24"><path d="M12 16l-4-4h3V4h2v8h3l-4 4zm-7 4v-2h14v2H5z"/></svg>
-                  Download for Linux
+              Download for Linux
             </a>
             <div class="dl-note">Run with sudo for full collection</div>
           </div>
@@ -758,9 +849,104 @@ footer{
     <li><a href="#how">architecture</a></li>
     <li><a href="#collectors">collectors</a></li>
     <li><a href="#download">download</a></li>
+    <li><a href="#" onclick="openPrivacy();return false;">privacy policy</a></li>
   </ul>
   <div class="foot-note">// all data stays on your machine</div>
 </footer>
+
+<!-- ─── PRIVACY POLICY MODAL ─── -->
+<div class="privacy-modal" id="privacyModal" onclick="handleModalClick(event)">
+  <div class="privacy-box">
+    <div class="privacy-bar">
+      <div class="privacy-bar-title">// PRIVACY POLICY</div>
+      <button class="privacy-close" onclick="closePrivacy()">✕ CLOSE</button>
+    </div>
+    <div class="privacy-content">
+
+      <h1>Privacy Policy</h1>
+      <span class="privacy-updated">Last updated: May 2026</span>
+
+      <!-- 1 -->
+      <h2>1. Introduction</h2>
+      <p>ForensicChat ("we", "our", "us") operates the ForensicChat application and the website <strong style="color:var(--cyan);">www.forensichat.app</strong>. This Privacy Policy explains how we handle your data when you use our application.</p>
+
+      <!-- 2 -->
+      <h2>2. Information We Collect</h2>
+
+      <h3>2.1 Locally Collected Forensic Artifacts</h3>
+      <p>When you run Analyze System, ForensicChat reads and stores the following <strong style="color:var(--ink);">locally on your device only:</strong></p>
+      <ul>
+        <li>Browser history (URLs, titles, timestamps)</li>
+        <li>USB device records (device names, vendor IDs, timestamps)</li>
+        <li>System logs and event log entries</li>
+        <li>Recently accessed files and executed program records</li>
+      </ul>
+      <div class="privacy-note"><b>Note:</b> ForensicChat does not collect passwords, financial details, private messages, or any credentials.</div>
+
+      <h3>2.2 Website Analytics</h3>
+      <p>When you visit www.forensichat.app, standard web logs may record your IP address, browser type, and pages visited. This is used solely for website maintenance.</p>
+
+      <!-- 3 -->
+      <h2>3. How We Use Your Information</h2>
+      <ul>
+        <li>To display forensic artifact data within the application</li>
+        <li>To process natural language queries against locally stored data</li>
+        <li>To generate downloadable HTML forensic reports</li>
+        <li>To provide optional offline AI-assisted analysis summaries</li>
+      </ul>
+
+      <!-- 4 -->
+      <h2>4. Data Storage &amp; Security</h2>
+      <table class="privacy-table">
+        <tr><th>WHAT</th><th>WHERE</th></tr>
+        <tr><td>Forensic artifacts</td><td>Local SQLite database on your device only</td></tr>
+        <tr><td>Flask server</td><td>Binds to 127.0.0.1 — not accessible over any network</td></tr>
+        <tr><td>AI model</td><td>Runs completely offline — no data sent externally</td></tr>
+        <tr><td>Reports &amp; exports</td><td>Local folders on your device only</td></tr>
+      </table>
+      <div class="privacy-note">No cloud storage. No background sync. No remote servers.</div>
+
+      <!-- 5 -->
+      <h2>5. Data Sharing &amp; Third Parties</h2>
+      <p>We do <strong style="color:var(--red);">NOT:</strong></p>
+      <ul class="privacy-no-list">
+        <li>Transmit any forensic data to any third party</li>
+        <li>Sell or share your data with advertisers or data brokers</li>
+        <li>Include any telemetry, analytics, or tracking in the application</li>
+        <li>Make any external API calls during analysis or querying</li>
+      </ul>
+
+      <!-- 6 -->
+      <h2>6. Your Rights</h2>
+      <p>You have full control over your data:</p>
+      <ul>
+        <li><b>View</b> your data directly within the application</li>
+        <li><b>Clear</b> all data by re-running Analyze System</li>
+        <li><b>Export</b> your data using the Export JSON function</li>
+        <li><b>Delete</b> all data by removing <span style="font-family:var(--mono);color:var(--cyan);font-size:11px;">database/forensic_data.db</span></li>
+        <li><b>Uninstall</b> the application to remove all locally stored data entirely</li>
+      </ul>
+      <div class="privacy-note">No account deletion request is needed — ForensicChat does not create user accounts.</div>
+
+      <!-- 7 -->
+      <h2>7. Children's Privacy</h2>
+      <p>ForensicChat is intended for security professionals and adult researchers only. It is not intended for individuals under the age of 18. We do not knowingly collect personal information from children.</p>
+
+      <!-- 8 -->
+      <h2>8. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. Continued use of the application after changes constitutes acceptance of the updated policy.</p>
+
+      <!-- 9 -->
+      <h2>9. Contact Us</h2>
+      <p>If you have any questions or concerns regarding this Privacy Policy, please visit our website at <strong style="color:var(--cyan);">www.forensichat.app</strong>.</p>
+
+      <div class="privacy-footer-note">
+        <span>ForensicChat</span> — Local-first. Zero telemetry. Your data stays on your machine.
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <script>
 // scroll reveal
@@ -787,6 +973,23 @@ function simDl(el,fname,size){
     setTimeout(()=>{el.innerHTML=orig;el.style.opacity='1';},3200);
   },1700);
 }
+
+// privacy modal
+function openPrivacy(){
+  document.getElementById('privacyModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePrivacy(){
+  document.getElementById('privacyModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleModalClick(e){
+  if(e.target===document.getElementById('privacyModal')) closePrivacy();
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closePrivacy();
+});
 </script>
 </body>
 </html>
+```
